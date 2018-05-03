@@ -21,17 +21,29 @@ var ruleTester = new RuleTester();
 ruleTester.run("disallow-methods", rule, {
 
     valid: [
-
-        // give me some code that won't trigger a warning
+        {
+            code: "someObject.someMethod()",
+            options: [[{
+                'object': 'someObject',
+                'method': 'anotherMethod'
+            }]]
+        }
     ],
 
     invalid: [
         {
-            code: "var a = [1,23].indexOf(1);",
-            errors: [{
-                message: "Fill me in.",
-                type: "Me too"
-            }]
+            code: "someObject.indexOf()",
+            options: [[
+                {
+                    method: "indexOf"
+                }
+            ]],
+            errors: [
+                {
+                    message: "Calling someObject.disallowedMethod() is disallowed",
+                    type: "MemberExpression"
+                }
+            ]
         }
     ]
 });

@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-ie8-not-allowed",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "check es5 method that not allowed in ie8",
   "keywords": [
     "eslint",
